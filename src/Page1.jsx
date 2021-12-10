@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export const Page1 = () => {
   const arr = [...Array(100).keys()]; //stateに渡すことで別のページに持っていける
+
+  const history = useHistory(); //linkを使わないページ遷移にはuseHistory
+
+  const onClickDetailA = () => history.push("/page1/detailA"); //pushメソッドの引数に遷移先のルートを記載する
+
   return (
     <div>
       <h1>Page1 page</h1>
@@ -9,6 +14,7 @@ export const Page1 = () => {
       <br />
       <Link to="/page1/detailB">DetailB</Link>
       <br />
+      <button onClick={onClickDetailA}>DetailA</button>
     </div>
   );
 };
